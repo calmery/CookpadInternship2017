@@ -116,3 +116,7 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# Global
+
+dist/
