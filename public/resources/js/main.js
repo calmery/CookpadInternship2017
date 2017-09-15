@@ -217,17 +217,23 @@ const showMenu = () => {
 
     const recipeId = window.location.href.split( '/' ).pop()
 
-    const requestUrl = 'http://' + window.location.host + '/api/recipe/' + recipeId
+    const requestUrl = 'http://' + window.location.host + '/api/recipe/' + ( recipeId === 'demo' ? '99999' : recipeId )
 
     console.log( requestUrl )
 
-    fetch( requestUrl )
-      .then( ( response ) => {
-          // body = JSON.parse( body )
+    try {
+      fetch( requestUrl )
+        .then( ( response ) => {
+            // body = JSON.parse( body )
 
-          return response.json()
+            return response.json()
+        } )
+          .then( json => renderRecipe( json ) )
+    } catch( error ){
+      $.get( requestUrl, ( data ) => {
+        renderRecipe( data )
       } )
-        .then( json => renderRecipe( json ) )
+    }
 
     // After vue.js rendering
 
