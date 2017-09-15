@@ -130,8 +130,15 @@ const fetchRecipe = recipeId => {
         const _steps = document.getElementById( 'steps' )
         const steps = []
         for( let i=0; i<_steps.children.length; i++ ){
-          if( _steps.children[i].children.length !== 0 )
-            steps.push( _steps.children[i].children[0].textContent.slice( 10, -3 ) )
+          if( _steps.children[i].children.length !== 0 ){
+            let image = ''
+            try {
+              image = _steps.children[i].children[0].children[1].children[0].children[0].children[0].attributes['data-large-photo'].textContent
+            } catch( e ) {
+              // pass
+            }
+            steps.push( { text: _steps.children[i].children[0].textContent.slice( 10, -3 ), image: image } )
+          }
         }
 
         const recipe_id_and_published_date = document.getElementById( 'recipe_id_and_published_date' ).children

@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 
 import {
   search,
@@ -7,6 +8,12 @@ import {
 
 const app = express()
 const api = express()
+
+app.use( express.static( path.resolve( __dirname, '../public' ) ) )
+
+app.get( '/:id', ( _, response ) => {
+	response.sendFile( path.resolve( __dirname, '../public/index.html' ) )
+} )
 
 app.use( '/api', api )
 
