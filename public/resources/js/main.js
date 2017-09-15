@@ -162,6 +162,16 @@ const showMenu = () => {
       index++
     } )
 
+    const swiper = new Swiper( '.swiper-container', {
+      pagination: '.swiper-pagination',
+      slidesPerView: 1,
+      paginationClickable: true,
+      spaceBetween: 0,
+      keyboardControl: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+    } )
+
   }
 
     // Onload Functions
@@ -234,15 +244,3 @@ const showMenu = () => {
         renderRecipe( data )
       } )
     }
-
-    // After vue.js rendering
-
-    const swiper = new Swiper( '.swiper-container', {
-      pagination: '.swiper-pagination',
-      slidesPerView: 1,
-      paginationClickable: true,
-      spaceBetween: 0,
-      keyboardControl: true,
-      nextButton: '.swiper-button-next',
-      prevButton: '.swiper-button-prev',
-    } )
