@@ -106,7 +106,7 @@ const showMenu = () => {
                 <img src="resources/img/pose.png">
               </div>
               <div class="timer_reset_icon" onClick="resetTimer( ${index} )">
-                <img src="resources/img/pose.png">
+                <img src="resources/img/reset.png">
               </div>
             </div>
 
@@ -115,10 +115,10 @@ const showMenu = () => {
                 <span class="timer_minutes_${index}"></span>:<span class="timer_seconds_${index}"></span>
               </div>
               <div class="timer_start_icon" onClick="startTimer( ${index} )">
-                <img src="resources/img/pose.png">
+                <img src="resources/img/start.png">
               </div>
               <div class="timer_reset_icon" onClick="resetTimer( ${index} )">
-                <img src="resources/img/pose.png">
+                <img src="resources/img/reset.png">
               </div>
             </div>
           </div>
@@ -213,44 +213,7 @@ const showMenu = () => {
 
     /*
 
-    renderRecipe( {
-      id: '1715052',
-      publishDate: '12/04/17',
-      updateDate: '17/04/10',
-      materials: [
-        { material: 'さつまいも', amount: '150ｇ' },
-        { material: '卵', amount: '2個' },
-        { material: 'ごま', amount: '大さじ３' },
-        { material: 'マヨネーズ', amount: '大さじ１' },
-        { material: 'お酢', amount: '大さじ１' },
-        { material: '醤油', amount: '大さじ1/2' }
-      ],
-      image: 'https://img.cpcdn.com/recipes/1715052/280/745ea77289c5d10333d8215902605a9c.jpg?u=2335344&p=1334597882',
-      description: '600れぽ＆ニュース掲載❀感謝♪\nメイン材料たった２つ！\n胡麻の風味が全体を包み、卵と薩摩芋のほっこりコラボです♡＾＾',
-      advice: '下準備さえできていればすぐにできる簡単レシピです＾＾薩摩芋は温かいうちに調味料に漬け込む事で、味が良く馴染みます＾＾お子さんにもきっと食べ易いと思います。お好みでマスタードやブラックペッパーでアレンジ下さい。',
-      history: '胡麻を一杯とりたいと思った事がきっかけです。',
-      user: {
-        id: '2335344',
-        image: 'https://img.cpcdn.com/users/2335344/22x22c/a0b09b0bb06f3c4a6c542f629ee99d3b.jpg?u=2335344&p=1452946902',
-        screen_name: '時花菜'
-      },
-      title: '簡単☆薩摩芋と茹で卵のほっこりサラダ',
-      steps: [ { text: '鍋に卵を入れる', image: 'resources/recipe/recipe_01.jpg' }
-             , { text: '卵がかぶるくらいの量の水を入れる', image: 'resources/recipe/recipe_02.jpg' }
-             , { text: '15分ゆでる', image: 'resources/recipe/recipe_03.jpg' }
-             , { text: '流水で卵を冷やす', image: 'resources/recipe/recipe_04.jpg' }
-             , { text: 'すり鉢でごまを擦る', image: 'resources/recipe/recipe_05.jpg' }
-             , { text: 'さつまいもは一口サイズに切る', image: 'resources/recipe/recipe_06.gif' }
-             , { text: '切ったさつまいもをレンジで6分温める', image: 'resources/recipe/recipe_07.jpg' }
-             , { text: 'ボールにマヨネーズ・お酢・醤油を入れる', image: 'resources/recipe/recipe_08.jpg' }
-             , { text: '混ぜる', image: 'resources/recipe/recipe_09.png' }
-             , { text: '温めたさつまいもを加えて馴染ませる', image: 'resources/recipe/recipe_10.jpg' }
-             , { text: '擦ったごまを加え，充分に混ぜる', image: 'resources/recipe/recipe_11.jpg' }
-             , { text: 'ゆで卵の殻をむく', image: 'resources/recipe/recipe_12.jpg' }
-             , { text: 'ゆで卵をちぎってボールの中に入れる', image: 'resources/recipe/recipe_13.jpg' }
-             , { text: 'ざっくり混ぜる', image: 'resources/recipe/recipe_14.jpg' }
-             , { text: 'できあがり！！', image: 'resources/recipe/recipe_15.jpg' } ]
-    } )
+    renderRecipe(  )
 
     */
 
@@ -258,18 +221,58 @@ const showMenu = () => {
 
     const requestUrl = 'http://' + window.location.host + '/api/recipe/' + ( recipeId === 'demo' ? '99999' : recipeId )
 
-    console.log( requestUrl )
-
-    try {
-      fetch( requestUrl )
-        .then( ( response ) => {
-            // body = JSON.parse( body )
-
-            return response.json()
-        } )
-          .then( json => renderRecipe( json ) )
-    } catch( error ){
-      $.get( requestUrl, ( data ) => {
-        renderRecipe( data )
+    if( recipeId === 'demo' ){
+      renderRecipe( {
+        id: '1715052',
+        publishDate: '12/04/17',
+        updateDate: '17/04/10',
+        materials: [
+          { material: 'さつまいも', amount: '150ｇ' },
+          { material: '卵', amount: '2個' },
+          { material: 'ごま', amount: '大さじ３' },
+          { material: 'マヨネーズ', amount: '大さじ１' },
+          { material: 'お酢', amount: '大さじ１' },
+          { material: '醤油', amount: '大さじ1/2' }
+        ],
+        image: 'https://img.cpcdn.com/recipes/1715052/280/745ea77289c5d10333d8215902605a9c.jpg?u=2335344&p=1334597882',
+        description: '600れぽ＆ニュース掲載❀感謝♪\nメイン材料たった２つ！\n胡麻の風味が全体を包み、卵と薩摩芋のほっこりコラボです♡＾＾',
+        advice: '下準備さえできていればすぐにできる簡単レシピです＾＾薩摩芋は温かいうちに調味料に漬け込む事で、味が良く馴染みます＾＾お子さんにもきっと食べ易いと思います。お好みでマスタードやブラックペッパーでアレンジ下さい。',
+        history: '胡麻を一杯とりたいと思った事がきっかけです。',
+        user: {
+          id: '2335344',
+          image: 'https://img.cpcdn.com/users/2335344/22x22c/a0b09b0bb06f3c4a6c542f629ee99d3b.jpg?u=2335344&p=1452946902',
+          screen_name: '時花菜'
+        },
+        title: '簡単☆薩摩芋と茹で卵のほっこりサラダ',
+        steps: [ { text: '鍋に卵を入れる', image: 'resources/recipe/recipe_01.jpg' }
+               , { text: '卵がかぶるくらいの量の水を入れる', image: 'resources/recipe/recipe_02.jpg' }
+               , { text: '15分ゆでる', image: 'resources/recipe/recipe_03.jpg' }
+               , { text: '流水で卵を冷やす', image: 'resources/recipe/recipe_04.jpg' }
+               , { text: 'すり鉢でごまを擦る', image: 'resources/recipe/recipe_05.jpg' }
+               , { text: 'さつまいもは一口サイズに切る', image:  ['resources/recipe/recipe_06_a.jpg', 'resources/recipe/recipe_06_b.jpg']  }
+               , { text: '切ったさつまいもをレンジで6分温める', image: 'resources/recipe/recipe_07.jpg' }
+               , { text: 'ボールにマヨネーズ・お酢・醤油を入れる', image: 'resources/recipe/recipe_08.jpg' }
+               , { text: '混ぜる', image: 'resources/recipe/recipe_09.png' }
+               , { text: '温めたさつまいもを加えて馴染ませる', image: 'resources/recipe/recipe_10.jpg' }
+               , { text: '擦ったごまを加え，充分に混ぜる', image: 'resources/recipe/recipe_11.jpg' }
+               , { text: 'ゆで卵の殻をむく', image: 'resources/recipe/recipe_12.jpg' }
+               , { text: 'ゆで卵をちぎってボールの中に入れる', image: 'resources/recipe/recipe_13.jpg' }
+               , { text: 'ざっくり混ぜる', image: 'resources/recipe/recipe_14.jpg' }
+               , { text: 'できあがり！！', image: 'resources/recipe/recipe_15.jpg' } ]
       } )
+    } else {
+      try {
+        fetch( requestUrl )
+          .then( ( response ) => {
+              // body = JSON.parse( body )
+
+              return response.json()
+          } )
+            .then( json => renderRecipe( json ) )
+      } catch( error ){
+        $.get( requestUrl, ( data ) => {
+          renderRecipe( data )
+        } )
+      }
+
     }
