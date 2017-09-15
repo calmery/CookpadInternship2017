@@ -58,7 +58,7 @@ api.get( '/recipe/:id', ( request, response ) => {
              , { text: '15分ゆでる', image: 'resources/recipe/recipe_03.jpg' }
              , { text: '流水で卵を冷やす', image: 'resources/recipe/recipe_04.jpg' }
              , { text: 'すり鉢でごまを擦る', image: 'resources/recipe/recipe_05.jpg' }
-             , { text: 'さつまいもは一口サイズに切る', image: 'resources/recipe/recipe_06.gif' }
+             , { text: 'さつまいもは一口サイズに切る', image: ['resources/recipe/recipe_06_a.jpg', 'resources/recipe/recipe_06_b.jpg'] }
              , { text: '切ったさつまいもをレンジで6分温める', image: 'resources/recipe/recipe_07.jpg' }
              , { text: 'ボールにマヨネーズ・お酢・醤油を入れる', image: 'resources/recipe/recipe_08.jpg' }
              , { text: '混ぜる', image: 'resources/recipe/recipe_09.png' }

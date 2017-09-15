@@ -140,10 +140,16 @@ const showMenu = () => {
 
       let index = 1
 
+      let toggleElements = []
+      let toggleIndex = {}
+      let toggleUrl = {}
+
       recipeData.steps.forEach( step => {
-        console.log( materials )
       recipes.innerHTML += '<div class="swiper-slide">' + '<div class="step">'
-        + '<div class="step_image" style="background: url( ' + step.image + ' ); background-size: cover"></div>'
+      + (
+        typeof step.image === 'string' && step.image !== undefined ? '<div class="step_image" style="background: url( ' + step.image + ' ); background-size: cover"></div>' :
+        ( toggleElements.push('step_image_' + index), toggleIndex[index] = 0, toggleUrl[index] = step.image, '<div class="step_image" id="step_image_' + index + '" style="background: url( ' + step.image[0] + ' ); background-size: cover"></div>' )
+      )
         + '<div class="step_number">' + index + '</div>'
         + '<div class="step_line"></div>'
       +   '<div class="step_text">'
@@ -162,6 +168,27 @@ const showMenu = () => {
       index++
     } )
 
+    const tick = () => {
+      setTimeout( () => {
+        for( let i in toggleUrl ){
+          const urls = toggleUrl[i]
+
+          const length = urls.length
+
+          if( ++toggleIndex[i] >= length ){
+            toggleIndex[i] = 0
+          }
+
+          console.log( 'step_image_' + i )
+
+          document.getElementById( 'step_image_' + i ).style.background = 'url(' + urls[toggleIndex[i]] + ')'
+          document.getElementById( 'step_image_' + i ).style.backgroundSize = 'cover'
+        }
+
+        tick()
+      }, 1000 )
+    }
+
     const swiper = new Swiper( '.swiper-container', {
       pagination: '.swiper-pagination',
       slidesPerView: 1,
@@ -171,6 +198,8 @@ const showMenu = () => {
       nextButton: '.swiper-button-next',
       prevButton: '.swiper-button-prev',
     } )
+
+    tick()
 
   }
 
