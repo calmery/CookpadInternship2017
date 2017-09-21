@@ -1,0 +1,22 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-customurlscheme": {
+            "URL_SCHEME": "lacook",
+            "PACKAGE_NAME": "me.calmery.lacook"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "me.calmery.lacook"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "me.calmery.lacook"
+        }
+    },
+    "dependent_plugins": {}
+}
